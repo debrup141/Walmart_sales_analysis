@@ -1,18 +1,18 @@
-# Walmart Sales Data Analysis
+Walmart_Sales_Analysis
 
-## About
-
-This project aims to explore the Walmart Sales data to understand top performing branches and products, sales trend of of different products, customer behaviour. The aims is to study how sales strategies can be improved and optimized. The dataset was obtained from the [Kaggle Walmart Sales Forecasting Competition](https://www.kaggle.com/c/walmart-recruiting-store-sales-forecasting).
+About
+-----
+This project aims to explore the Walmart Sales data to understand top performing branches and products, sales trend of of different products, customer behaviour. The aims is to study how sales strategies can be improved and optimized. The dataset was obtained from the Kaggle Walmart Sales Forecasting Competition.
 
 "In this recruiting competition, job-seekers are provided with historical sales data for 45 Walmart stores located in different regions. Each store contains many departments, and participants must project the sales for each department in each store. To add to the challenge, selected holiday markdown events are included in the dataset. These markdowns are known to affect sales, but it is challenging to predict which departments are affected and the extent of the impact." [source](https://www.kaggle.com/c/walmart-recruiting-store-sales-forecasting)
 
-## Purposes Of The Project
-
+Purposes Of The Project
+-----------------------
 The major aim of thie project is to gain insight into the sales data of Walmart to understand the different factors that affect sales of the different branches.
 
-## About Data
-
-The dataset was obtained from the [Kaggle Walmart Sales Forecasting Competition](https://www.kaggle.com/c/walmart-recruiting-store-sales-forecasting). This dataset contains sales transactions from a three different branches of Walmart, respectively located in Mandalay, Yangon and Naypyitaw. The data contains 17 columns and 1000 rows:
+About Data
+----------
+The dataset was obtained from the Kaggle Walmart Sales Forecasting Competition. This dataset contains sales transactions from a three different branches of Walmart, respectively located in Mandalay, Yangon and Naypyitaw. The data contains 17 columns and 1000 rows:
 
 | Column                  | Description                             | Data Type      |
 | :---------------------- | :-------------------------------------- | :------------- |
@@ -24,18 +24,18 @@ The dataset was obtained from the [Kaggle Walmart Sales Forecasting Competition]
 | product_line            | Product line of the product solf        | VARCHAR(100)   |
 | unit_price              | The price of each product               | DECIMAL(10, 2) |
 | quantity                | The amount of the product sold          | INT            |
-| VAT                 | The amount of tax on the purchase       | FLOAT(6, 4)    |
+| VAT                     | The amount of tax on the purchase       | FLOAT(6, 4)    |
 | total                   | The total cost of the purchase          | DECIMAL(10, 2) |
 | date                    | The date on which the purchase was made | DATE           |
 | time                    | The time at which the purchase was made | TIMESTAMP      |
-| payment_method                 | The total amount paid                   | DECIMAL(10, 2) |
+| payment_method          | The total amount paid                   | DECIMAL(10, 2) |
 | cogs                    | Cost Of Goods sold                      | DECIMAL(10, 2) |
 | gross_margin_percentage | Gross margin percentage                 | FLOAT(11, 9)   |
 | gross_income            | Gross Income                            | DECIMAL(10, 2) |
 | rating                  | Rating                                  | FLOAT(2, 1)    |
 
-### Analysis List
-
+Analysis List
+-------------
 1. Product Analysis
 
 > Conduct analysis on the data to understand the different product lines, the products lines performing best and the product lines that need to be improved.
@@ -48,8 +48,8 @@ The dataset was obtained from the [Kaggle Walmart Sales Forecasting Competition]
 
 > This analysis aims to uncover the different customers segments, purchase trends and the profitability of each customer segment.
 
-## Approach Used
-
+Approach Used
+-------------
 1. **Data Wrangling:** This is the first step where inspection of data is done to make sure **NULL** values and missing values are detected and data replacement methods are used to replace, missing or **NULL** values.
 
 > 1. Build a database
@@ -67,8 +67,6 @@ The dataset was obtained from the [Kaggle Walmart Sales Forecasting Competition]
 2. **Exploratory Data Analysis (EDA):** Exploratory data analysis is done to answer the listed questions and aims of this project.
 
 3. **Conclusion:**
-
-## Business Questions To Answer
 
 ### Generic Question
 
@@ -142,32 +140,3 @@ $ total = VAT + COGS\\= 16.0265 + 320.53 = $336.5565$
 
 $ \text{Gross Margin Percentage} = \frac{\text{gross income}}{\text{total revenue}}\\=\frac{16.0265}{336.5565} = 0.047619\\\approx 4.7619\% $
 
-## Code
-
-For the rest of the code, check the [SQL_queries.sql](https://github.com/Princekrampah/WalmartSalesAnalysis/blob/master/SQL_queries.sql) file
-
-```sql
--- Create database
-CREATE DATABASE IF NOT EXISTS walmartSales;
-
--- Create table
-CREATE TABLE IF NOT EXISTS sales(
-	invoice_id VARCHAR(30) NOT NULL PRIMARY KEY,
-    branch VARCHAR(5) NOT NULL,
-    city VARCHAR(30) NOT NULL,
-    customer_type VARCHAR(30) NOT NULL,
-    gender VARCHAR(30) NOT NULL,
-    product_line VARCHAR(100) NOT NULL,
-    unit_price DECIMAL(10,2) NOT NULL,
-    quantity INT NOT NULL,
-    tax_pct FLOAT(6,4) NOT NULL,
-    total DECIMAL(12, 4) NOT NULL,
-    date DATETIME NOT NULL,
-    time TIME NOT NULL,
-    payment VARCHAR(15) NOT NULL,
-    cogs DECIMAL(10,2) NOT NULL,
-    gross_margin_pct FLOAT(11,9),
-    gross_income DECIMAL(12, 4),
-    rating FLOAT(2, 1)
-);
-```
